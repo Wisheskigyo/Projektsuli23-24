@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Regisztrálás</title>
     <link rel="stylesheet" href="regisztralas.css">
 </head>
 
@@ -16,48 +16,48 @@
     </div>
 </header>
 <form id="registrationForm" onsubmit="return validateForm()">
-    <label for="userType">Select User Type:</label>
+    <label for="userType">Válassz felhasználó típust:</label>
     <select id="userType" name="userType">
-        <option value="user">User</option>
-        <option value="host">Host</option>
+        <option value="user">Tag</option>
+        <option value="host">Tulajdonos</option>
     </select>
 
-    <label for="username">Username:</label>
+    <label for="username">Felhasználónév:</label>
     <input type="text" id="username" name="username" required>
 
-    <label for="password">Password:</label>
+    <label for="password">Jelszó:</label>
     <input type="password" id="password" name="password" required>
 
-    <label for="confirmPassword">Confirm Password:</label>
+    <label for="confirmPassword">Jelszó újra:</label>
     <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-    <label for="firstName">First Name:</label>
+    <label for="firstName">Vezetéknév:</label>
     <input type="text" id="firstName" name="firstName" required>
 
-    <label for="lastName">Last Name:</label>
+    <label for="lastName">Keresztnév:</label>
     <input type="text" id="lastName" name="lastName" required>
 
     <div id="hostFields" style="display: none;">
-        <label for="partyhouseName">Partyhouse Name:</label>
-        <input type="text" id="partyhouseName" name="partyhouseName">
+        <label for="partyhouseName">Szórakozóhely neve:</label>
+        <input type="text" id="partyhouseName" name="partyhouseName" required>
 
-        <label for="partyhouseAddress">Partyhouse Address:</label>
-        <input type="text" id="partyhouseAddress" name="partyhouseAddress">
+        <label for="partyhouseAddress">Szórakozóhely címe:</label>
+        <input type="text" id="partyhouseAddress" name="partyhouseAddress" required>
 
-        <label for="idNumber">ID Number:</label>
-        <input type="text" id="idNumber" name="idNumber">
+        <label for="idNumber">JMBG szám:</label>
+        <input type="text" id="idNumber" name="idNumber" required>
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber">
+        <label for="phoneNumber">Telefonszám:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
 
-        <label for="email">Email Address:</label>
+        <label for="email">Email cím:</label>
         <input type="email" id="email" name="email">
 
-        <label for="partyhouseLogo">Partyhouse Logo:</label>
+        <label for="partyhouseLogo">Szórakozóhely logója:</label>
         <input type="file" id="partyhouseLogo" name="partyhouseLogo">
     </div>
 
-    <a href="fooldal.html"> <button type="submit" onclick="submitForm()">Register</button></a>
+    <a href="fooldal.html"> <button type="submit" onclick="submitForm()">Regisztrálás</button></a>
 </form>
 
 <script src="registration.js"></script>

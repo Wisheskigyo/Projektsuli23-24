@@ -6,9 +6,9 @@ function validateForm(event) {
     const confirmPassword = document.getElementById("confirmPassword").value;
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+        alert("A két jelszó nem egyezik meg!");
     } else {
-        alert("Registration successful! Redirecting to fooldal.html");
+        alert("Regisztrálás sikeres!");
         window.location.href = "fooldal.html";
     }
 }
