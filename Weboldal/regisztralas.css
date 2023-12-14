@@ -1,13 +1,25 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
+    font-family: Arial, sans-serif;
 
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --gradient-start: rgba(26, 188, 156, 1);
+    --gradient-end: rgba(142, 68, 173, 1);
+}
+html {
+    height: 2000px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    background: rgb(26, 188, 156);
+    background: -moz-linear-gradient(-45deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    background: -webkit-linear-gradient(-45deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+*{padding: 0; margin: 0; box-sizing: border-box;}
+body{height: 900px;}
 header {
     background: url('https://media.timeout.com/images/105347841/image.jpg');
     text-align: center;
@@ -19,33 +31,34 @@ header {
     overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
 }
-
-header .overlay {
+header .overlay{
     width: 100%;
     height: 100%;
     padding: 50px;
     color: #FFF;
     text-shadow: 1px 1px 1px #333;
-    background-image: linear-gradient(135deg, #9f05ff69 10%, #fd5e086b 100%);
+    background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+
 }
 
-.container {
+form {
+    max-width: 600px;
+    margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Adjust the margin as needed */
 }
 
 label {
     display: block;
-    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
-input, select, button {
+input,
+select {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -54,8 +67,13 @@ input, select, button {
 
 button {
     background-color: #4caf50;
-    color: #fff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-
+button:hover {
+    background-color: #45a049;
+}

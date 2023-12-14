@@ -1,31 +1,31 @@
-function showFields() {
-    var userType = document.getElementById("userType").value;
-    var hostFields = document.getElementById("hostFields");
+function validateForm() {
+    const userType = document.getElementById("userType").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-    try {
-        // Reset the form and hide host fields when switching between Member and Host
-        document.getElementById("registrationForm").reset();
-
-        if (userType === "host") {
-            hostFields.style.display = "block";
-        } else if (userType==="member") {
-            hostFields.style.display = "none";
-            // Clear host fields explicitly
-            document.getElementById("partyhouseName").value = "";
-            document.getElementById("partyhouseAddress").value = "";
-            document.getElementById("idNumber").value = "";
-            document.getElementById("phoneNumber").value = "";
-            document.getElementById("email").value = "";
-            // You might want to add similar code for clearing file input fields if needed
-        }
-    } catch (error) {
-        console.error("An error occurred while clearing fields:", error.message);
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
     }
+
+    // Additional validation logic can be added here
+
+    // Assuming the validation is successful, redirect to "fooldal.html"
+    alert("Registration successful! Redirecting to fooldal.html");
+
+
+
+    // If you want to prevent the default form submission, uncomment the line below
+    // return false;
 }
 
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    // Perform form validation and submission logic here
-    console.log("Sikeressen regisztráltál!");
+document.getElementById("userType").addEventListener("change", function () {
+    const hostFields = document.getElementById("hostFields");
+
+    if (this.value === "host") {
+        hostFields.style.display = "block";
+    } else {
+        hostFields.style.display = "none";
+    }
 });
