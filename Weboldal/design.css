@@ -26,7 +26,7 @@ h3{
     border-top: 0px solid #7F7F7F;
     border-right: 0px solid #7F7F7F;
     padding: 10px;
-    width:1450px;
+    width:auto;
 }
 
 ul li a:hover {
