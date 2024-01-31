@@ -1,183 +1,122 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
     margin: 0;
     padding: 0;
-    outline: none;
-    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
-body{
+body {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    overflow: hidden;
-    background: url("bg.png"), -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
+    padding: 20px;
+    background: rgb(130, 106, 251);
 }
-::selection{
-    color: #fff;
-    background: #d43f8d;
-}
-.container{
-    width: 330px;
+.container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
     background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
     text-align: center;
-    border-radius: 5px;
-    padding: 50px 35px 10px 35px;
 }
-.container header{
-    font-size: 35px;
-    font-weight: 600;
-    margin: 0 0 30px 0;
+.container .form {
+    margin-top: 30px;
 }
-.container .form-outer{
+.form .input-box {
     width: 100%;
-    overflow: hidden;
+    margin-top: 20px;
 }
-.container .form-outer form{
-    display: flex;
-    width: 400%;
+.input-box label {
+    color: #333;
 }
-.form-outer form .page{
-    width: 25%;
-    transition: margin-left 0.3s ease-in-out;
-}
-.form-outer form .page .title{
-    text-align: left;
-    font-size: 25px;
-    font-weight: 500;
-}
-.form-outer form .page .field{
-    width: 330px;
-    height: 45px;
-    margin: 45px 0;
-    display: flex;
+.form :where(.input-box input, .select-box) {
     position: relative;
-}
-form .page .field .label{
-    position: absolute;
-    top: -30px;
-    font-weight: 500;
-}
-form .page .field input{
-    height: 100%;
+    height: 50px;
     width: 100%;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    padding-left: 15px;
-    font-size: 18px;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
 }
-form .page .field select{
-    width: 100%;
-    padding-left: 10px;
-    font-size: 17px;
-    font-weight: 500;
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
-form .page .field button{
-    width: 100%;
-    height: calc(100% + 5px);
-    border: none;
-    background: #d33f8d;
-    margin-top: -20px;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: 0.5s ease;
-}
-form .page .field button:hover{
-    background: #000;
-}
-form .page .btns button{
-    margin-top: -20px!important;
-}
-form .page .btns button.prev{
-    margin-right: 3px;
-    font-size: 17px;
-}
-form .page .btns button.next{
-    margin-left: 3px;
-}
-.container .progress-bar{
+.form .column {
     display: flex;
-    margin: 40px 0;
-    user-select: none;
+    column-gap: 15px;
 }
-.container .progress-bar .step{
-    text-align: center;
-    width: 100%;
-    position: relative;
+.form .gender-box {
+    margin-top: 20px;
 }
-.container .progress-bar .step p{
-    font-weight: 500;
-    font-size: 18px;
-    color: #000;
+.gender-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
     margin-bottom: 8px;
 }
-.progress-bar .step .bullet{
-    height: 25px;
-    width: 25px;
-    border: 2px solid #000;
-    display: inline-block;
-    border-radius: 50%;
-    position: relative;
-    transition: 0.2s;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 25px;
+.form :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
 }
-.progress-bar .step .bullet.active{
-    border-color: #d43f8d;
-    background: #d43f8d;
+.form .gender {
+    column-gap: 5px;
 }
-.progress-bar .step .bullet span{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.gender input {
+    accent-color: rgb(130, 106, 251);
 }
-.progress-bar .step .bullet.active span{
-    display: none;
+.form :where(.gender input, .gender label) {
+    cursor: pointer;
 }
-.progress-bar .step .bullet:before,
-.progress-bar .step .bullet:after{
-    position: absolute;
-    content: '';
-    bottom: 11px;
-    right: -51px;
-    height: 3px;
-    width: 44px;
-    background: #262626;
+.gender label {
+    color: #707070;
 }
-.progress-bar .step .bullet.active:after{
-    background: #d43f8d;
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: animate 0.3s linear forwards;
+.address :where(input, .select-box) {
+    margin-top: 15px;
 }
-@keyframes animate {
-    100%{
-        transform: scaleX(1);
-    }
+.select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
 }
-.progress-bar .step:last-child .bullet:before,
-.progress-bar .step:last-child .bullet:after{
-    display: none;
-}
-.progress-bar .step p.active{
-    color: #d43f8d;
-    transition: 0.2s linear;
-}
-.progress-bar .step .check{
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    font-size: 15px;
-    transform: translate(-50%, -50%);
-    display: none;
-}
-.progress-bar .step .check.active{
-    display: block;
+.form button {
+    height: 55px;
+    width: 100%;
     color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(130, 106, 251);
+}
+.form button:hover {
+    background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+    .form :where(.gender-option, .gender) {
+        row-gap: 15px;
+    }
 }

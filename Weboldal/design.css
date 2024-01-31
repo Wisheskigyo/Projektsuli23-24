@@ -44,7 +44,6 @@ header {
     background-attachment: fixed;
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 85% 85% / 30%;
 }
 header .overlay{
     width: 100%;

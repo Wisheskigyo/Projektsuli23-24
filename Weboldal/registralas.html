@@ -1,116 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+
+<html lang="hu">
 <head>
-    <meta charset="utf-8">
-    <title>Multi Step Form | CodingNepal</title>
-    <link rel="stylesheet" href="regisztralas.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="regisztralas.css" />
+
 </head>
 <body>
-<div class="container">
+<section class="container">
     <header>Regisztrálás</header>
-    <div class="progress-bar">
-        <div class="step">
-            <p>Név</p>
-            <div class="bullet">
-                <span>1</span>
-            </div>
-            <div class="check fas fa-check"></div>
+    <form action="#" class="form">
+        <div class="input-box">
+            <label>Teljes név:</label>
+            <input type="text" placeholder="Írja be a teljes nevét" required />
         </div>
-        <div class="step">
-            <p>Kontakt</p>
-            <div class="bullet">
-                <span>2</span>
-            </div>
-            <div class="check fas fa-check"></div>
-        </div>
-        <div class="step">
-            <p>Szül.</p>
-            <div class="bullet">
-                <span>3</span>
-            </div>
-            <div class="check fas fa-check"></div>
-        </div>
-        <div class="step">
-            <p>Küldés</p>
-            <div class="bullet">
-                <span>4</span>
-            </div>
-            <div class="check fas fa-check"></div>
-        </div>
-    </div>
-    <div class="form-outer">
-        <form action="#">
-            <div class="page slide-page">
-                <div class="title">Alap infók:</div>
-                <div class="field">
-                    <div class="label">Vezetéknév</div>
-                    <input type="text">
-                </div>
-                <div class="field">
-                    <div class="label">Keresztnév</div>
-                    <input type="text">
-                </div>
-                <div class="field">
-                    <button class="firstNext next">Következő</button>
-                </div>
-            </div>
 
-            <div class="page">
-                <div class="title">Elérhetőség:</div>
-                <div class="field">
-                    <div class="label">Email cím</div>
-                    <input type="text">
+        <div class="input-box">
+            <label>Email cím</label>
+            <input type="text" placeholder="Írja be email címet" required />
+        </div>
+
+        <div class="column">
+            <div class="input-box">
+                <label>Telefonszám</label>
+                <input type="number" placeholder="Írja be a telefonszámát" required />
+            </div>
+            <div class="input-box">
+                <label>Születési dátum</label>
+                <input type="date" placeholder="Írja be a születési dátumot" required />
+            </div>
+        </div>
+        <div class="gender-box">
+            <h3>Nem</h3>
+            <div class="gender-option">
+                <div class="gender">
+                    <input type="radio" id="check-male" name="gender" checked />
+                    <label for="check-male">Férfi</label>
                 </div>
-                <div class="field">
-                    <div class="label">Instagram fiok</div>
-                    <input type="text">
+                <div class="gender">
+                    <input type="radio" id="check-female" name="gender" />
+                    <label for="check-female">Nő</label>
                 </div>
-                <div class="field btns">
-                    <button class="prev-1 prev">Előző</button>
-                    <button class="next-1 next">Következő</button>
+                <div class="gender">
+                    <input type="radio" id="check-other" name="gender" />
+                    <label for="check-other">Inkább nem mondom meg</label>
                 </div>
             </div>
-
-            <div class="page">
-                <div class="title">Születési dátum:</div>
-                <div class="field">
-                    <div class="label">Dátum</div>
-                    <input type="text">
-                </div>
-                <div class="field">
-                    <div class="label">Nem</div>
+        </div>
+        <div class="input-box address">
+            <label>Cím</label>
+            <input type="text" placeholder="Írja be a címét(utca,házszám)" required />
+            <input type="text" placeholder="Írja be a címe második sorát (pl.: 12-es lakás)"  />
+            <div class="column">
+                <div class="select-box">
                     <select>
-                        <option>Férfi</option>
-                        <option>Nő</option>
-                        <option>Egyéb</option>
+                        <option hidden>Ország</option>
+                        <option>Amerika</option>
+                        <option>Japán</option>
+                        <option>India</option>
+                        <option>Nepál</option>
                     </select>
                 </div>
-                <div class="field btns">
-                    <button class="prev-2 prev">Előző</button>
-                    <button class="next-2 next">Következő</button>
-                </div>
+                <input type="text" placeholder="Adja meg a város nevét" required />
             </div>
-
-            <div class="page">
-                <div class="title">Belépési adatok:</div>
-                <div class="field">
-                    <div class="label">Felhasználó név</div>
-                    <input type="text">
-                </div>
-                <div class="field">
-                    <div class="label">Jelszó</div>
-                    <input type="password">
-                </div>
-                <div class="field btns">
-                    <button class="prev-3 prev">Előző</button>
-                    <button class="submit">Következő</button>
-                </div>
+            <div class="column">
+                <input type="text" placeholder="Adja meg a régióját" required />
+                <input type="number" placeholder="Adja meg az irányító számot" required />
             </div>
-        </form>
-    </div>
-</div>
-<script src="registration.js"></script>
-
+        </div>
+        <a href="fooldal.html" ><button type="button" onclick="submitForm()">Regisztrálok</button></a>
+    </form>
+</section>
+<script src=" login.js"></script>
 </body>
 </html>
