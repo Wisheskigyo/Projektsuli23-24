@@ -1,18 +1,45 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VajdaságiVibes</title>
-    <link rel="stylesheet" href="tesztcss.css">
-    <link rel="stylesheet" href="teszt.js">
-    <link rel="stylesheet" href="keret.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
-<body style="background-color: #444444">
+<body>
 
-<div class="box">
-    Look ma, gradient border with rounded corners and transparent background!!!
-</div>
+<label for="emailInput">Enter your email:</label>
+<input type="text" id="emailInput" oninput="validateEmail()">
+<label id="resultLabel"></label>
 
+<script>
+    function validateEmail() {
+        // Get the input value
+        var emailInput = document.getElementById('emailInput').value;
+
+        // Regular expression for basic email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Check if the email is valid
+        var isValid = emailRegex.test(emailInput);
+
+        // Get the label element
+        var resultLabel = document.getElementById('resultLabel');
+
+        // Update the label based on the validation result
+        if (isValid) {
+            resultLabel.textContent = 'Valid email';
+            resultLabel.className = ''; // Remove any previous error class
+        } else {
+            resultLabel.textContent = 'Invalid email';
+            resultLabel.className = 'error'; // Apply error class for styling
+        }
+    }
+</script>
 
 </body>
+</html>

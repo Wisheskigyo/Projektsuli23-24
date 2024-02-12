@@ -7,30 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <link rel="stylesheet" href="regisztralas.css" />
-
+    
 </head>
 <body>
 <section class="container">
     <header>Regisztrálás</header>
-    <form action="#" class="form">
+    <form action="#" class="form"action="register.php" method="post" autocomplete="off" >
         <div class="input-box">
             <label>Teljes név:</label>
-            <input type="text" placeholder="Írja be a teljes nevét" required />
+            <input id="name" type="text" placeholder="Írja be a teljes nevét" required />
         </div>
-
+        <div class="input-box">
+            <label>Felhasználó név:</label>
+            <input id="user" type="text" placeholder="Írja be a felhasznál nevét" required />
+        </div>
+        <div class="input-box">
+            <label>Jelszó:</label>
+            <input id="pass" type="number" placeholder="Írja be a jelszavát" required />
+        </div>
+        <div class="input-box">
+            <label>Jelszó újra:</label>
+            <input id="repass" type="number" placeholder="Írja be a jelszavát újra" required />
+        </div>
         <div class="input-box">
             <label>Email cím</label>
-            <input type="text" placeholder="Írja be email címet" required />
+            <input id="emailInput" oninput="validateEmail()" type="text" placeholder="Írja be email címet" required />
         </div>
+        <label id="resultLabel"></label>
 
         <div class="column">
             <div class="input-box">
                 <label>Telefonszám</label>
-                <input type="number" placeholder="Írja be a telefonszámát" required />
+                <input id="phone" type="number" placeholder="Írja be a telefonszámát" required />
             </div>
             <div class="input-box">
                 <label>Születési dátum</label>
-                <input type="date" placeholder="Írja be a születési dátumot" required />
+                <input id="birth" type="date" placeholder="Írja be a születési dátumot" required />
             </div>
         </div>
         <div class="gender-box">
@@ -52,11 +64,11 @@
         </div>
         <div class="input-box address">
             <label>Cím</label>
-            <input type="text" placeholder="Írja be a címét(utca,házszám)" required />
-            <input type="text" placeholder="Írja be a címe második sorát (pl.: 12-es lakás)"  />
+            <input id="address" type="text" placeholder="Írja be a címét(utca,házszám)" required />
+            <input id="address2" type="text" placeholder="Írja be a címe második sorát (pl.: 12-es lakás)"  />
             <div class="column">
                 <div class="select-box">
-                    <select>
+                    <select id="country">
                         <option hidden>Ország</option>
                         <option>Amerika</option>
                         <option>Japán</option>
@@ -64,16 +76,16 @@
                         <option>Nepál</option>
                     </select>
                 </div>
-                <input type="text" placeholder="Adja meg a város nevét" required />
+                <input id="city" type="text" placeholder="Adja meg a város nevét" required />
             </div>
             <div class="column">
-                <input type="text" placeholder="Adja meg a régióját" required />
-                <input type="number" placeholder="Adja meg az irányító számot" required />
+                <input id="region" type="text" placeholder="Adja meg a régióját" required />
+                <input id="post" type="number" placeholder="Adja meg az irányító számot" required />
             </div>
         </div>
         <a href="fooldal.html" ><button type="button" onclick="submitForm()">Regisztrálok</button></a>
     </form>
 </section>
-<script src=" login.js"></script>
+<script src=" registration.js "></script>
 </body>
 </html>
