@@ -1,91 +1,99 @@
 <!DOCTYPE html>
-
 <html lang="hu">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="regisztralas.css" />
-    
+
 </head>
 <body>
 <section class="container">
     <header>Regisztrálás</header>
-    <form action="#" class="form"action="register.php" method="post" autocomplete="off" >
-        <div class="input-box">
-            <label>Teljes név:</label>
-            <input id="name" type="text" placeholder="Írja be a teljes nevét" required />
-        </div>
-        <div class="input-box">
-            <label>Felhasználó név:</label>
-            <input id="user" type="text" placeholder="Írja be a felhasznál nevét" required />
-        </div>
-        <div class="input-box">
-            <label>Jelszó:</label>
-            <input id="pass" type="number" placeholder="Írja be a jelszavát" required />
-        </div>
-        <div class="input-box">
-            <label>Jelszó újra:</label>
-            <input id="repass" type="number" placeholder="Írja be a jelszavát újra" required />
-        </div>
-        <div class="input-box">
-            <label>Email cím</label>
-            <input id="emailInput" oninput="validateEmail()" type="text" placeholder="Írja be email címet" required />
-        </div>
-        <label id="resultLabel"></label>
-
-        <div class="column">
-            <div class="input-box">
-                <label>Telefonszám</label>
-                <input id="phone" type="number" placeholder="Írja be a telefonszámát" required />
-            </div>
-            <div class="input-box">
-                <label>Születési dátum</label>
-                <input id="birth" type="date" placeholder="Írja be a születési dátumot" required />
-            </div>
-        </div>
-        <div class="gender-box">
-            <h3>Nem</h3>
-            <div class="gender-option">
-                <div class="gender">
-                    <input type="radio" id="check-male" name="gender" checked />
-                    <label for="check-male">Férfi</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" id="check-female" name="gender" />
-                    <label for="check-female">Nő</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" id="check-other" name="gender" />
-                    <label for="check-other">Inkább nem mondom meg</label>
-                </div>
-            </div>
-        </div>
-        <div class="input-box address">
-            <label>Cím</label>
-            <input id="address" type="text" placeholder="Írja be a címét(utca,házszám)" required />
-            <input id="address2" type="text" placeholder="Írja be a címe második sorát (pl.: 12-es lakás)"  />
+    <form id="registration-form" action="register.php" method="post" autocomplete="off">
+        <div class="form">
             <div class="column">
+                <div class="input-box">
+                    <label>Teljes név:</label>
+                    <input id="name" type="text" placeholder="Írja be a teljes nevét" required />
+                </div>
+                <div class="input-box">
+                    <label>Felhasználó név:</label>
+                    <input id="user" type="text" placeholder="Írja be a felhasználó nevét" required />
+                </div>
+                <div class="input-box">
+                    <label>Jelszó:</label>
+                    <input id="pass" type="password" placeholder="Írja be a jelszavát" required />
+                </div>
+                <div class="input-box">
+                    <label>Jelszó újra:</label>
+                    <input id="repass" type="password" placeholder="Írja be a jelszavát újra" required />
+                </div>
+                <div class="input-box">
+                    <label>Email cím:</label>
+                    <input id="emailInput" oninput="validateEmail()" type="email" placeholder="Írja be az email címét" required />
+                </div>
+                <div class="input-box">
+                    <label>Születési dátum:</label>
+                    <input id="birth" type="date" placeholder="Írja be a születési dátumot" required />
+                </div>
+            </div>
+            <div class="gender-box">
+                <h3>Nem</h3>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input type="radio" id="check-male" name="gender" checked />
+                        <label for="check-male">Férfi</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-female" name="gender" />
+                        <label for="check-female">Nő</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-other" name="gender" />
+                        <label for="check-other">Inkább nem mondom meg</label>
+                    </div>
+                </div>
+            </div>
+            <div class="column address">
+                <div class="input-box">
+                    <label>Cím:</label>
+                    <input id="address" type="text" placeholder="Írja be a címét (utca, házszám)" required />
+                </div>
+                <div class="input-box">
+                    <label>Cím második sora:</label>
+                    <input id="address2" type="text" placeholder="Írja be a címe második sorát (pl.: 12-es lakás)" />
+                </div>
                 <div class="select-box">
-                    <select id="country">
-                        <option hidden>Ország</option>
+                    <label>Ország:</label>
+                    <select id="country" required>
+                        <option hidden>Válasszon országot</option>
                         <option>Amerika</option>
                         <option>Japán</option>
                         <option>India</option>
                         <option>Nepál</option>
                     </select>
                 </div>
-                <input id="city" type="text" placeholder="Adja meg a város nevét" required />
-            </div>
-            <div class="column">
-                <input id="region" type="text" placeholder="Adja meg a régióját" required />
-                <input id="post" type="number" placeholder="Adja meg az irányító számot" required />
+                <div class="input-box">
+                    <label>Város:</label>
+                    <input id="city" type="text" placeholder="Adja meg a város nevét" required />
+                </div>
+                <div class="column">
+                    <div class="input-box">
+                        <label>Régió:</label>
+                        <input id="region" type="text" placeholder="Adja meg a régióját" required />
+                    </div>
+                    <div class="input-box">
+                        <label>Irányítószám:</label>
+                        <input id="post" type="number" placeholder="Adja meg az irányítószámot" required />
+                    </div>
+                </div>
             </div>
         </div>
-        <a href="fooldal.html" ><button type="button" onclick="submitForm()">Regisztrálok</button></a>
+        <button type="button" onclick="submitForm()">Regisztrálok</button>
     </form>
 </section>
-<script src=" registration.js "></script>
 </body>
 </html>

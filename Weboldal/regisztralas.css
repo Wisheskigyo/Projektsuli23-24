@@ -34,7 +34,7 @@ body {
 }
 .form .input-box {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .input-box label {
     color: #333;
@@ -56,6 +56,7 @@ body {
 }
 .form .column {
     display: flex;
+    flex-wrap: wrap;
     column-gap: 15px;
 }
 .form .gender-box {
@@ -91,18 +92,19 @@ body {
 .select-box select {
     height: 100%;
     width: 100%;
+    max-width: calc(100% - 30px); /* Módosítás: Maximális szélesség beállítása */
     outline: none;
     border: none;
     color: #707070;
     font-size: 1rem;
 }
 .form button {
-    height: 55px;
-    width: 100%;
+    height: 45px;
+    width: 50%;
+    margin: 20px auto;
     color: #fff;
     font-size: 1rem;
     font-weight: 400;
-    margin-top: 30px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;

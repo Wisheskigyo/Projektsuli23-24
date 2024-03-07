@@ -5,34 +5,58 @@
     <title>Bejelentkezés</title>
     <link rel="stylesheet" href="design.css">
     <link rel="stylesheet" href="login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
+
 <header>
-<div class="overlay">
-    <h1>VajdaságiVibe</h1>
-</div>
+    <div class="overlay">
+        <h1>VajdaságiVibe</h1>
+    </div>
 </header>
 
+<script>
+    $(document).ready(function () {
+        $("#login-form").submit(function (event) {
+            // Form küldése AJAX segítségével
+            event.preventDefault();
+
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            $.ajax({
+                type: "POST",
+                url: "check.php",
+                data: { username: username, password: password },
+                success: function (response) {
+                    if (response === "success") {
+                        alert("Sikeres bejelentkezés!");
+                        window.location.href = "fooldal.html"; // Sikeres bejelentkezés esetén átirányítás
+                    } else if (response === "incorrect_password") {
+                        alert("Helytelen jelszó!");
+                    } else if (response === "user_not_found") {
+                        alert("Felhasználó nem található!");
+                    } else {
+                        alert("Hiba a bejelentkezés során.");
+                    }
+                },
+                error: function () {
+                    alert("Hiba a kérés során.");
+                }
+            });
+        });
+    });
+</script>
 
 <div class="login-container">
     <h2>Bejelentkezés</h2>
     <form id="login-form">
-        <label for="username">Felhasználónév:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Jelszó:</label>
-        <input type="password" id="password" name="password" required>
-
-        <a href="fooldal.html"> <button type="button" onclick="submitForm()">Bejelentkezés</button></a>
+        Felhasználónév: <input type="text" id="username" name="username" required><br>
+        Jelszó: <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Bejelentkezés">
         <p class="register-link">Nincs fiókod? <a href="registralas.html">Készíts egyet</a></p>
     </form>
 </div>
-
-<script src="login.js"></script>
-
-
-
-
 
 </body>
 </html>
