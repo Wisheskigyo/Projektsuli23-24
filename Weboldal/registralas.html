@@ -7,14 +7,20 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="regisztralas.css" />
-
+    <script src="registration.js"></script>
 </head>
 <body>
 <section class="container">
     <header>Regisztrálás</header>
-    <form id="registration-form" action="register.php" method="post" autocomplete="off">
+    <form id="registration-form" action="register.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <div class="form">
             <div class="column">
+                <div class="input-box">
+                    <label>Profilkép feltöltése:</label>
+                    <input id="profilePicture" type="file" name="profilePicture" accept="image/*" />
+
+
+                </div>
                 <div class="input-box">
                     <label>Teljes név:</label>
                     <input id="name" type="text" placeholder="Írja be a teljes nevét" required />
@@ -32,8 +38,13 @@
                     <input id="repass" type="password" placeholder="Írja be a jelszavát újra" required />
                 </div>
                 <div class="input-box">
+                    <label>Telefonszam:</label>
+                    <input id="phone" type="number" placeholder="Írja be a telefonszamat" required />
+                </div>
+                <div class="input-box">
                     <label>Email cím:</label>
-                    <input id="emailInput" oninput="validateEmail()" type="email" placeholder="Írja be az email címét" required />
+                    <input id="emailInput" oninp    ut="validateEmail()" type="email" placeholder="Írja be az email címét" required />
+                    <label id="resultLabel"></label>
                 </div>
                 <div class="input-box">
                     <label>Születési dátum:</label>
@@ -92,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" onclick="submitForm()">Regisztrálok</button>
+        <button type="submit">Regisztrálok</button>
     </form>
 </section>
 </body>

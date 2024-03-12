@@ -6,20 +6,58 @@ $dbname = "vajdasagivibes";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Ellenőrizze a kapcsolódást
 if ($conn->connect_error) {
     die("Hiba a kapcsolódásban: " . $conn->connect_error);
 }
 
-// AJAX kérés kezelése
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+function uploadProfilePicture($file)
+{
+    $targetDir = "uploads/";
+    $targetFile = $targetDir . basename($file["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-    // Bejövő adatok feldolgozása
+
+    if (isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["profilePicture"]["tmp_name"]);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+
+    if ($_FILES["profilePicture"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif") {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    } else {
+          if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+        return $targetFile;
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+        return null;
+    }
+}
+
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $teljesnev = mysqli_real_escape_string($conn, $_POST['teljesnev']);
     $felhn = mysqli_real_escape_string($conn, $_POST['felhn']);
     $jelszo = password_hash($_POST['jelszo'], PASSWORD_DEFAULT);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $telefonszam = mysqli_real_escape_string($conn, $_POST['telefonszam']);
+    $tel = mysqli_real_escape_string($conn, $_POST['tel']);
     $szuldat = mysqli_real_escape_string($conn, $_POST['szuldat']);
     $nem = mysqli_real_escape_string($conn, $_POST['nem']);
     $cim1 = mysqli_real_escape_string($conn, $_POST['cim1']);
@@ -28,33 +66,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $varos = mysqli_real_escape_string($conn, $_POST['varos']);
     $iranyitoszam = mysqli_real_escape_string($conn, $_POST['iranyitoszam']);
 
-
-    // Ellenőrizze, hogy a felhasználónév már foglalt-e
     $checkUsernameQuery = "SELECT * FROM `regisztralas` WHERE `felhn` = '$felhn'";
-
     $checkUsernameResult = $conn->query($checkUsernameQuery);
+    $profilePicturePath = uploadProfilePicture($_FILES['profilePicture']);
+
 
     if ($checkUsernameResult->num_rows > 0) {
         echo "username_taken";
     } else {
-        // Adatbázisba történő beillesztés
-        $insertQuery = "INSERT INTO regisztralas (teljesnev, felhn, jelszo, email, telefonszam, szuldat, nem, cim1, cim2, orszag, varos, iranyitoszam) 
-                VALUES ('$teljesnev', '$felhn', '$jelszo', '$email', '$telefonszam', '$szuldat', '$nem', '$cim1', '$cim2', '$orszag', '$varos', '$iranyitoszam')";
+        $insertQuery = "INSERT INTO regisztralas (teljesnev, felhn, jelszo, email, tel, szuldat, nem, cim1, cim2, orszag, varos, iranyitoszam, profilkep) 
+            VALUES ('$teljesnev', '$felhn', '$jelszo', '$email', '$tel', '$szuldat', '$nem', '$cim1', '$cim2', '$orszag', '$varos', '$iranyitoszam', '$profilePicturePath')";
 
-// Hibaellenőrzés a beillesztésnél
-        $result = $conn->query($checkUsernameQuery);
+        $result = $conn->query($insertQuery);
 
         if (!$result) {
             echo "Error: " . $conn->error;
             exit;
+        } else {
+            echo "success";
         }
-
     }
 }
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-
-// Adatbázis lezárása
 $conn->close();
 ?>

@@ -1,35 +1,27 @@
 function validateEmail() {
-    // Get the input value
     var emailInput = document.getElementById('emailInput').value;
-
-    // Regular expression for basic email validation
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // Check if the email is valid
     var isValid = emailRegex.test(emailInput);
-
-    // Get the label element
     var resultLabel = document.getElementById('resultLabel');
 
-    // Update the label based on the validation result
     if (isValid) {
         resultLabel.textContent = 'Érvényes email cím';
-        resultLabel.className = ''; // Remove any previous error class
+        resultLabel.className = '';
     } else {
         resultLabel.textContent = 'Érvénytelen email cím';
-        resultLabel.className = 'error'; // Apply error class for styling
+        resultLabel.className = 'error';
     }
 }
+
 $(document).ready(function () {
     $("#registration-form").submit(function (event) {
-        // Form küldése AJAX segítségével
         event.preventDefault();
 
         var teljesnev = $("#name").val();
         var felhn = $("#user").val();
         var jelszo = $("#pass").val();
         var email = $("#emailInput").val();
-        var telefonszam = $("#phone").val();
+        var tel = $("#phone").val();
         var szuldat = $("#birth").val();
         var nem = $("input[name='gender']:checked").val();
         var cim1 = $("#address").val();
@@ -37,28 +29,34 @@ $(document).ready(function () {
         var orszag = $("#country").val();
         var varos = $("#city").val();
         var iranyitoszam = $("#post").val();
+        var profilePicture = $("#profilePicture").prop("files")[0];
+
+        var formData = new FormData();
+        formData.append("teljesnev", teljesnev);
+        formData.append("felhn", felhn);
+        formData.append("jelszo", jelszo);
+        formData.append("email", email);
+        formData.append("tel", tel);
+        formData.append("szuldat", szuldat);
+        formData.append("nem", nem);
+        formData.append("cim1", cim1);
+        formData.append("cim2", cim2);
+        formData.append("orszag", orszag);
+        formData.append("varos", varos);
+        formData.append("iranyitoszam", iranyitoszam);
+        formData.append("profilePicture", profilePicture);
 
         $.ajax({
             type: "POST",
-            url: "regisztracio.php", // A regisztrációs PHP fájl elérési útvonala
-            data: {
-                teljesnev: teljesnev,
-                felhn: felhn,
-                jelszo: jelszo,
-                email: email,
-                telefonszam: telefonszam,
-                szuldat: szuldat,
-                nem: nem,
-                cim1: cim1,
-                cim2: cim2,
-                orszag: orszag,
-                varos: varos,
-                iranyitoszam: iranyitoszam
-            },
+            url: "register.php",
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: formData,
             success: function (response) {
                 if (response === "success") {
                     alert("Sikeres regisztráció!");
-                    window.location.href = "fooldal.html"; // Sikeres regisztráció esetén átirányítás
+                    window.location.href = "fooldal.html";
                 } else if (response === "username_taken") {
                     alert("A felhasználónév már foglalt!");
                 } else {
@@ -71,3 +69,4 @@ $(document).ready(function () {
         });
     });
 });
+
