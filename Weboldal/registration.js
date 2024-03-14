@@ -23,13 +23,20 @@ $(document).ready(function () {
         var email = $("#emailInput").val();
         var tel = $("#phone").val();
         var szuldat = $("#birth").val();
-        var nem = $("input[name='gender']:checked").val();
+
         var cim1 = $("#address").val();
         var cim2 = $("#address2").val();
         var orszag = $("#country").val();
         var varos = $("#city").val();
         var iranyitoszam = $("#post").val();
         var profilePicture = $("#profilePicture").prop("files")[0];
+
+        if (document.getElementById("check-male").checked)
+            nem = 'Férfi';
+        else if (document.getElementById("check-female").checked)
+            nem = 'Nő';
+        else
+            nem = 'Semmi';
 
         var formData = new FormData();
         formData.append("teljesnev", teljesnev);
@@ -54,9 +61,10 @@ $(document).ready(function () {
             cache: false,
             data: formData,
             success: function (response) {
+                console.log(response);
                 if (response === "success") {
                     alert("Sikeres regisztráció!");
-                    window.location.href = "fooldal.html";
+                    window.location.href = "fooldal.php";
                 } else if (response === "username_taken") {
                     alert("A felhasználónév már foglalt!");
                 } else {

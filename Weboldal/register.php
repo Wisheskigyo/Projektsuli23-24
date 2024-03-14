@@ -33,15 +33,14 @@ function uploadProfilePicture($file)
         $uploadOk = 0;
     }
 
+
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
 
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } else {
+    if ($uploadOk > 0) {
           if (move_uploaded_file($file["tmp_name"], $targetFile)) {
         return $targetFile;
     } else {
@@ -68,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $checkUsernameQuery = "SELECT * FROM `regisztralas` WHERE `felhn` = '$felhn'";
     $checkUsernameResult = $conn->query($checkUsernameQuery);
-    $profilePicturePath = uploadProfilePicture($_FILES['profilePicture']);
+    $profilePicturePath = isset($_FILES['profilePicture']) && uploadProfilePicture($_FILES['profilePicture']);
 
 
     if ($checkUsernameResult->num_rows > 0) {

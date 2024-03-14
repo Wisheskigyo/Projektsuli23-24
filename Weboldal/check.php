@@ -6,35 +6,37 @@ $dbname = "vajdasagivibes";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Ellenőrizze a kapcsolódást
 if ($conn->connect_error) {
     die("Hiba a kapcsolódásban: " . $conn->connect_error);
 }
 
-// AJAX kérés kezelése
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Bejövő adatok feldolgozása
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $felhn = mysqli_real_escape_string($conn, $_POST['username']);
+    $jelszo = mysqli_real_escape_string($conn, $_POST['password']);
 
-    // Adatbázis lekérdezés
-    $sql = "SELECT * FROM regisztralas WHERE felhn = '$username'";
-    $result = $conn->query($sql);
+    $getPasswordQuery = "SELECT jelszo, felhn FROM `regisztralas` WHERE `felhn` = '$felhn'";
+    $result = $conn->query($getPasswordQuery);
 
     if ($result->num_rows > 0) {
-        // Felhasználó létezik, ellenőrizze a jelszót
         $row = $result->fetch_assoc();
-        if (password_verify($password, $row['jelszo'])) {
-            // Jelszó helyes
-            echo "success";
-        } else {
-            // Helytelen jelszó
-            echo "incorrect_password";
-        }
+        $storedPassword = $row['jelszo'];
+        $storedUsername = $row['felhn'];
 
+        // Ellenőrzés: Az adatbázisban tárolt jelszó és a felhasználó által megadott jelszó egyezik-e
+        if (password_verify($jelszo, $storedPassword)) {
+            // Sikeres bejelentkezés
+            session_start();
+            $_SESSION['username'] = $storedUsername; // Felhasználónév session változóba mentése
+            echo "success" ;
+        } else {
+            // Sikertelen bejelentkezés
+            echo "failure";
+        }
     } else {
-        // Felhasználó nem létezik
+        // Felhasználói fiók nem található
         echo "user_not_found";
     }
 }
+
+$conn->close();
 ?>
