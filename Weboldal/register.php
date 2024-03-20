@@ -32,7 +32,14 @@ function uploadProfilePicture($file)
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
-
+    if ($uploadOk > 0) {
+        if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+            return $targetFile;
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+            return null;
+        }
+    }
 
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif") {

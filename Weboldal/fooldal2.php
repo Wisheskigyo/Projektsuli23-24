@@ -26,7 +26,8 @@
         <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;"href="Jegyek.html">Jegyek</a></li>
         <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="visszjelzes.html">Visszajezés</a></li>
         <li style="display: inline-block;float: right ;height: 40px;width: 40px">
-            <?php require 'user_profile.php'; ?>
+            <a href="profilszerk.php"> <?php require 'user_profile.php'; ?> </a>
+
         </li>
     </ul>
 </nav>

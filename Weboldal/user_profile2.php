@@ -32,14 +32,14 @@ if (isset($_SESSION['username'])) {
         if (empty($profilePicturePath)) {
             // Ha a felhasználónak nincs profilképe, használjuk az alapértelmezett képet a nem alapján
             $gender = $user['nem'];
-               if($gender==='Férfi') {
-                   $defaultImage = "default-men.png"; // Alapértelmezett kép férfiaknak
-               }else if ($gender==='Nő') {
-                   $defaultImage = "default-female.png"; // Alapértelmezett kép nőknek
-               }else {
+            if($gender==='Férfi') {
+                $defaultImage = "default-men.png"; // Alapértelmezett kép férfiaknak
+            }else if ($gender==='Nő') {
+                $defaultImage = "default-female.png"; // Alapértelmezett kép nőknek
+            }else {
 
-                   $defaultImage = "default-non.png"; // Alapértelmezett kép más esetekben
-               }
+                $defaultImage = "default-non.png"; // Alapértelmezett kép más esetekben
+            }
 
             $profilePicturePath = "uploads/" . $defaultImage;
         }
@@ -55,10 +55,10 @@ if (isset($_SESSION['username'])) {
 
 if (!empty($profilePicturePath)) :
     ?>
-    <img style="height: 36px; width: 40px;" src="<?php echo $profilePicturePath; ?>" alt="profilkép" />
+    <img style="height: 200px; width: 200px;" src="<?php echo $profilePicturePath; ?>" alt="profilkép" />
 <?php else : ?>
 
-    <img style="height: 36px; width: 40px; border-radius: 50%;" src="resourses/login.png" alt="profilkép" />
+    <img style="height: 200px; width: 200px; border-radius: 50%;" src="resourses/login.png" alt="profilkép" />
 <?php endif; ?>
 <script>
     $(document).ready(function () {
@@ -69,4 +69,5 @@ if (!empty($profilePicturePath)) :
         }
     });
 </script>
+
 
