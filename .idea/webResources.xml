@@ -6,6 +6,7 @@
         <entryData>
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/Weboldal/resourses" />
+            <path value="file://$PROJECT_DIR$/Weboldal/web-resourses" />
           </resourceRoots>
         </entryData>
       </entry>

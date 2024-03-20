@@ -22,7 +22,7 @@
     <ul style="  padding: 0; list-style: none;background: #f2f2f2;">
         <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="fooldal.html">Főoldal</a></li>
         <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="rolunk.html">Rólunk</a></li>
-        <li style="display: inline-block;float: right"><a href="loginpanel.html"><img   style="height: 40px;width: 40px"  src="resourses/login.png" alt="login"/></a> </li>
+        <li style="display: inline-block;float: right"><a href="loginpanel.html"><img style="height: 40px;width: 40px" src="../resourses/login.png" alt="login"/></a> </li>
     </ul>
 </nav>
 

@@ -46,7 +46,7 @@ if (isset($_SESSION['username'])) {
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <?php require 'user_profile2.php'?>
+                    <?php require 'user_profile2.php' ?>
 
                 </div>
             </div>
