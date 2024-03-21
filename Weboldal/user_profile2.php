@@ -58,7 +58,7 @@ if (!empty($profilePicturePath)) :
     <img style="height: 200px; width: 200px;" src="<?php echo $profilePicturePath; ?>" alt="profilkép" />
 <?php else : ?>
 
-    <img style="height: 200px; width: 200px; border-radius: 50%;" src="../resourses/login.png" alt="profilkép" />
+    <img style="height: 200px; width: 200px; border-radius: 50%;" src="resourses/login.png" alt="profilkép" />
 <?php endif; ?>
 <script>
     $(document).ready(function () {

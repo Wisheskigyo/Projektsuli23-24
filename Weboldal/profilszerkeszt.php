@@ -22,6 +22,7 @@ if (isset($_SESSION['username'])) {
         $name = $user['teljesnev'];
         $email = $user['email'];
         $phone = $user['tel'];
+        $profilePicturePath = $user['profilkep']; // A felhasználó profilképének elérési útja az adatbázisból
     }
 }
 
