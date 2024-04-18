@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: loginpanel.html");
+    exit();
+}
+
+$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -21,8 +32,8 @@
 </header>
 <nav>
     <ul style="  padding: 0; list-style: none;background: #f2f2f2;">
-        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="fooldal.php">Főoldal</a></li>
-        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="rolunk.html">Rólunk</a></li>
+        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="fooldal2.php">Főoldal</a></li>
+        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="rolunk.php">Rólunk</a></li>
         <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;"href="Jegyek.html">Jegyek</a></li>
         <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="visszjelzes.html">Visszajezés</a></li>
         <li style="display: inline-block;float: right ;height: 40px;width: 40px">
