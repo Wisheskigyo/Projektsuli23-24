@@ -1,45 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Validation</title>
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <title>Visszajelzés </title>
+    <link rel="stylesheet" href="visszajelzes.css" />
 </head>
 <body>
-
-<label for="emailInput">Enter your email:</label>
-<input type="text" id="emailInput" oninput="validateEmail()">
-<label id="resultLabel"></label>
-
-<script>
-    function validateEmail() {
-        // Get the input value
-        var emailInput = document.getElementById('emailInput').value;
-
-        // Regular expression for basic email validation
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        // Check if the email is valid
-        var isValid = emailRegex.test(emailInput);
-
-        // Get the label element
-        var resultLabel = document.getElementById('resultLabel');
-
-        // Update the label based on the validation result
-        if (isValid) {
-            resultLabel.textContent = 'Valid email';
-            resultLabel.className = ''; // Remove any previous error class
-        } else {
-            resultLabel.textContent = 'Invalid email';
-            resultLabel.className = 'error'; // Apply error class for styling
-        }
-    }
-</script>
-
+<h2>Visszajelzés küldése</h2>
+<form action="visszajelzes.php" method="post">
+    <label for="name">Név:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="message">Üzenet:</label><br>
+    <textarea id="message" name="message"></textarea><br><br>
+    <input type="submit" value="Küldés">
+</form>
 </body>
 </html>

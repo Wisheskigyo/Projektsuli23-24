@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <title>Visszajelzes</title>
-    <link rel="stylesheet" href="design.css">
+    <meta charset="UTF-8" />
+    <title>Visszajelzés </title>
+    <link rel="stylesheet" href="visszajelzes.css" />
 </head>
 <body>
-<header>
-    <div class="overlay">
-        <h1>VajdaságiVibe</h1>
-    </div>
-</header>
-<nav>
-    <ul style="  padding: 0; list-style: none;background: #f2f2f2;">
-        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="fooldal2.php">Főoldal</a></li>
-        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="rolunk.php">Rólunk</a></li>
-        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;"href="Jegyek.html">Jegyek</a></li>
-        <li style="display: inline-block;"><a style="display: block; padding: 10px 25px; color: #333;text-decoration: none;" href="visszjelzes.html">Visszajezés</a></li>
-        <li style="display: inline-block;float: right ;height: 40px;width: 40px">
-            <a href="profilszerk.php"> <?php require 'user_profile.php'; ?> </a>
-
-        </li>
-    </ul>
-</nav>
+<h2>Visszajelzés küldése</h2>
+<form action="visszajelzes.php" method="post">
+    <label for="name">Név:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="message">Üzenet:</label><br>
+    <textarea id="message" name="message"></textarea><br><br>
+    <input type="submit" value="Küldés">
+</form>
 </body>
 </html>
