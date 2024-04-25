@@ -1,27 +1,23 @@
-<!-- Stage- Bootstrap one page Event ticket booking theme 
-Created by pixpalette.com - online design magazine -->
+
 <!DOCTYPE html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Jegy vásárlás</title>
 
-    <!-- Bootstrap -->
+
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
     
-    <!-- fonts -->
+
     <link href='http://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
   </head>
   <body>
   	
@@ -37,7 +33,6 @@ Created by pixpalette.com - online design magazine -->
             	<div class="event-banner-wrapper">
                 	<div class="logo">
                         <h1>Közelgő</h1>
-                        <img style="height: 570px ; width: 450px" src="event-banner.jpg" alt="banner">
                     </div>
                 
                 	<h2>
@@ -73,7 +68,34 @@ Created by pixpalette.com - online design magazine -->
             							<div class="ticket-name">
                                             Nucci Party Night
                                             <span>Normál<br>
-                                        	1 jegy  1 emberre</span>
+                                        	1 jegy  1 emberre
+                                            <?php
+                                            // PHP kód a jegyek számának lekérdezésére és beillesztésére
+                                            $servername = "localhost";
+                                            $username = "root";
+                                            $password = "";
+                                            $dbname = "vajdasagivibes";
+
+                                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                            if ($conn->connect_error) {
+                                                die("Connection failed: " . $conn->connect_error);
+                                            }
+
+                                            $sql = "SELECT mennyi FROM jegyek WHERE jegyid = 1"; // Jegyid alapján lekérdezés
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                                    echo "<br>Jegyek száma: " . $row["mennyi"];
+                                                }
+                                            } else {
+                                                echo "<br>Nincs elérhető jegy jelenleg.";
+                                            }
+
+                                            $conn->close();
+                                            ?>
+                                            </span>
                                         </div>
             						</div>
                                     
@@ -114,7 +136,34 @@ Created by pixpalette.com - online design magazine -->
  			                       	<div class="col-xs-6">
             							<div class="ticket-name">Nucci Party Night<span>
                                         VIP Jegy<br>
-                                        1 jegy 1 emberre</span></div>
+                                        1 jegy 1 emberre
+                                                <?php
+                                                // PHP kód a jegyek számának lekérdezésére és beillesztésére
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $dbname = "vajdasagivibes";
+
+                                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                                if ($conn->connect_error) {
+                                                    die("Connection failed: " . $conn->connect_error);
+                                                }
+
+                                                $sql = "SELECT mennyi FROM jegyek WHERE jegyid = 2"; // Jegyid alapján lekérdezés
+                                                $result = $conn->query($sql);
+
+                                                if ($result->num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo "<br>Jegyek száma: " . $row["mennyi"];
+                                                    }
+                                                } else {
+                                                    echo "<br>Nincs elérhető jegy jelenleg.";
+                                                }
+
+                                                $conn->close();
+                                                ?>
+                                            </span></div>
             						</div>
                                     
                                     <div class="col-xs-6">
@@ -155,7 +204,33 @@ Created by pixpalette.com - online design magazine -->
  			                       	<div class="col-xs-6">
             							<div class="ticket-name">Single Party /w Szecsei <span>
                                             Normál jegy<br>
-                                        1 jegy for 1 emberre</span></div>
+                                        1 jegy for 1 emberre
+                                            <?php
+                                            // PHP kód a jegyek számának lekérdezésére és beillesztésére
+                                            $servername = "localhost";
+                                            $username = "root";
+                                            $password = "";
+                                            $dbname = "vajdasagivibes";
+
+                                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                            if ($conn->connect_error) {
+                                                die("Connection failed: " . $conn->connect_error);
+                                            }
+
+                                            $sql = "SELECT mennyi FROM jegyek WHERE jegyid = 3"; // Jegyid alapján lekérdezés
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                                    echo "<br>Jegyek száma: " . $row["mennyi"];
+                                                }
+                                            } else {
+                                                echo "<br>Nincs elérhető jegy jelenleg.";
+                                            }
+
+                                            $conn->close();
+                                            ?></span></div>
             						</div>
                                     
                                     <div class="col-xs-6">
@@ -196,7 +271,34 @@ Created by pixpalette.com - online design magazine -->
  			                       	<div class="col-xs-6">
             							<div class="ticket-name">Single Party /w Szecsei<span>
                                         VIP Jegy<br>
-                                        1 jegy 1 emberre</span></div>
+                                        1 jegy 1 emberre
+                                            <?php
+                                            // PHP kód a jegyek számának lekérdezésére és beillesztésére
+                                            $servername = "localhost";
+                                            $username = "root";
+                                            $password = "";
+                                            $dbname = "vajdasagivibes";
+
+                                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                            if ($conn->connect_error) {
+                                                die("Connection failed: " . $conn->connect_error);
+                                            }
+
+                                            $sql = "SELECT mennyi FROM jegyek WHERE jegyid = 4"; // Jegyid alapján lekérdezés
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                                    echo "<br>Jegyek száma: " . $row["mennyi"];
+                                                }
+                                            } else {
+                                                echo "<br>Nincs elérhető jegy jelenleg.";
+                                            }
+
+                                            $conn->close();
+                                            ?>
+                                            </span></div>
             						</div>
                                     
                                     <div class="col-xs-6">
@@ -314,7 +416,8 @@ Created by pixpalette.com - online design magazine -->
                   <div class="form-group">
                      <input type="text" class="form-control" placeholder="Adja meg a telefonszámát" required>
                   </div>
-                <a href="../fooldal2.php" class="btn">Jegyek lefoglalása</a>
+                    <a href="Weboldal/fooldal2.php" target="_blank" class="btn">Jegyek lefoglalása</a>
+
                 </form>
             </div>
         
@@ -326,9 +429,7 @@ Created by pixpalette.com - online design magazine -->
 </div>
     
     
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap.min.js"></script>
     <script src="allscript.js"></script>
   </body>

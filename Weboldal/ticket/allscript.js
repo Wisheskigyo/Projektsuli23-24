@@ -75,22 +75,65 @@ $('.input-number').change(function() {
     }
 });
 
-function activeTicket(target, inputValue, ticketPrice, total, ticketType) {
-	if(inputValue > 0) {
-		$('#buyTicket .ticketBox').addClass('inActiveTicket');
-		$(target).parents('.ticketBox').removeClass('inActiveTicket').addClass('activeTicket');
-		$('.cart .btn').removeClass('disabled');
-		$('.ticket-type').html(ticketType);
-		$('.ticket-count').html(inputValue);
-		$('.ticket-amount').html(ticketPrice);
-		$('.total-amount').html(total);
-	} else {
-		$('#buyTicket .ticketBox').removeClass('inActiveTicket');
-		$(target).parents('.ticketBox').removeClass('activeTicket inActiveTicket');
-		$('.cart .btn').addClass('disabled');
-		$('.ticket-type').html('');
-		$('.ticket-count').html(inputValue);
-		$('.ticket-amount').html(ticketPrice);
-		$('.total-amount').html(total);
-	}
+function activeTicket(target, inputValue, ticketPrice, total, ticketId) {
+    if (inputValue > 0) {
+        $('#buyTicket .ticketBox').addClass('inActiveTicket');
+        $(target).parents('.ticketBox').removeClass('inActiveTicket').addClass('activeTicket');
+        $('.cart .btn').removeClass('disabled');
+        $('.ticket-type').html(ticketId);
+        $('.ticket-count').html(inputValue);
+        $('.ticket-amount').html(ticketPrice);
+        $('.total-amount').html(total);
+
+        // AJAX hívás az adatbázis frissítéséhez
+        $.ajax({
+            type: 'POST',
+            url: 'update_ticket.php', // A fájl, amelyben az adatbázis frissítése történik
+            data: {
+                ticketId: ticketId, // Jegy ID-je
+                ticketCount: inputValue // Jegyek száma
+            },
+            success: function(response) {
+                console.log('Adatbázis frissítve: ' + response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Hiba az adatbázis frissítésekor: ' + error);
+            }
+        });
+    } else {
+        $('#buyTicket .ticketBox').removeClass('inActiveTicket');
+        $(target).parents('.ticketBox').removeClass('activeTicket inActiveTicket');
+        $('.cart .btn').addClass('disabled');
+        $('.ticket-type').html('');
+        $('.ticket-count').html(inputValue);
+        $('.ticket-amount').html(ticketPrice);
+        $('.total-amount').html(total);
+    }
 }
+$(document).ready(function() {
+    // Az "Adja meg az elérhetőségi adatokat" gombra kattintás eseménykezelője
+    $('.btn').click(function(e) {
+        e.preventDefault();
+
+        // Jegy adatainak összegyűjtése
+        var ticketId = $(this).parents('.modal-content').find('.ticket-type').attr('data-ticket-id');
+        var inputValue = $(this).parents('.modal-content').find('.ticket-count').html();
+
+        // AJAX kérés küldése a jegyek frissítéséhez
+        $.ajax({
+            type: 'POST',
+            url: 'update_ticket.php', // A PHP fájl helye
+            data: {
+                ticketId: ticketId, // Jegy ID-je
+                ticketCount: inputValue // Jegyek száma
+            },
+            success: function(response) {
+                console.log('Adatbázis frissítve: ' + response);
+                // Itt lehet további műveleteket végezni, például egy üzenet megjelenítése stb.
+            },
+            error: function(xhr, status, error) {
+                console.error('Hiba az adatbázis frissítésekor: ' + error);
+            }
+        });
+    });
+});
